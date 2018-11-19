@@ -23,6 +23,7 @@ public class PanelMain extends JPanel {
 	private JScrollPane scrollPane;
 
 	public PanelMain() {
+		logger.info("PanelMain start");
 		this.setSize(width, height);
 		this.setLayout(new BorderLayout(0, 0));
 	    scrollPane = new JScrollPane();

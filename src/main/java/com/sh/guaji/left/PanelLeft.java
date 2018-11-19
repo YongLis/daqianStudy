@@ -28,9 +28,10 @@ public class PanelLeft extends JPanel {
 	private static final long serialVersionUID = 7630716080488771001L;
 	private static Logger logger = LoggerFactory.getLogger(PanelLeft.class);
 
-	public JLabel jLabel4_accountNum,jLabel4_loginedNum,jLabel4_unusedNum;
 	public PanelLeft() {
 		super();
+		logger.info("PanelLeft start");
+
 		// this.setBackground(Color.LIGHT_GRAY);
 		this.setLayout(new FlowLayout());
 		this.setPreferredSize(new Dimension(300, 600));
@@ -144,30 +145,37 @@ public class PanelLeft extends JPanel {
 
 		// 统计
 		TitleBorderPanel titledBorder4 = new TitleBorderPanel("统计");
-		titledBorder4.setPreferredSize(new Dimension(300, 60));
+		titledBorder4.setPreferredSize(new Dimension(300, 120));
 
 		JPanel panel4 = new JPanel(new GridLayout(5, 2, 2, 2));
 		// 总账号数量
 		panel4.add(new JLabel("总账号数量："));
-		jLabel4_accountNum = new JLabel(YYJFrame.accountList.size() + "");
-		panel4.add(jLabel4_accountNum, "jLabel4_accountNum");
+		JTextField text_acctountNum = new JTextField(
+				YYJFrame.accountList.size() + "");
+		text_acctountNum.setEditable(false);
+		text_acctountNum.addActionListener(new TimerActionListener(
+				text_acctountNum, "acctountNum"));
+		panel4.add(text_acctountNum, "text_acctountNum");
 
 		// 已登录账号数量
 		panel4.add(new JLabel("已登录数量："));
-		jLabel4_loginedNum = new JLabel(YYJFrame.logedList.size() + "");
-		panel4.add(jLabel4_loginedNum, "jLabel4_accountNum");
+		JTextField text_loginedNum = new JTextField(YYJFrame.logedList.size()
+				+ "");
+		text_loginedNum.setEditable(false);
+		text_loginedNum.addActionListener(new TimerActionListener(
+				text_loginedNum, "loginedNum"));
+		panel4.add(text_loginedNum, "text_loginedNum");
 
 		// 已登录未使用剩余数量
 		panel4.add(new JLabel("未进频道数量："));
-		jLabel4_unusedNum = new JLabel(
+		JTextField text_unusedNum = new JTextField(
 				(YYJFrame.logedList.size() - YYJFrame.activedList.size()) + "");
-		panel4.add(jLabel4_unusedNum, "jLabel4_unusedNum");
+		text_unusedNum.setEditable(false);
+		text_unusedNum.addActionListener(new TimerActionListener(
+				text_unusedNum, "unusedNum"));
+		panel4.add(text_unusedNum, "jLabel4_unusedNum");
 		titledBorder4.add(panel4, "tj");
-		this.add(titledBorder4,"titledBorder4");
-	}
-
-	public void flush() {
-
+		this.add(titledBorder4, "titledBorder4");
 	}
 
 	// 读取文件

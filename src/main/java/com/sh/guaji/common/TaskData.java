@@ -10,6 +10,10 @@ public class TaskData {
 	private String state;
 	private long threadId;
 
+	public TaskData(){
+		
+	}
+	
 	public long getTaskId() {
 		return taskId;
 	}
@@ -20,10 +24,6 @@ public class TaskData {
 
 	public void setState(String state) {
 		this.state = state;
-	}
-
-	public void setTaskId(long taskId) {
-		this.taskId = taskId;
 	}
 
 	public String getRoomId() {
